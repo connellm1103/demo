@@ -1,0 +1,52 @@
+name: my_skillet
+label: my label
+description: my description
+
+type: panos
+
+variables:
+
+snippets:
+  - name: snippet_1
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]
+    element: |-
+            <address>
+        <entry name="good guy">
+          <ip-netmask>1.1.1.1</ip-netmask>
+        </entry>
+      </address>
+      
+  - name: snippet_2
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/rulebase/security/rules
+    element: |-
+            <entry name="good guy">
+        <to>
+          <member>any</member>
+        </to>
+        <from>
+          <member>any</member>
+        </from>
+        <source>
+          <member>good guy</member>
+        </source>
+        <destination>
+          <member>any</member>
+        </destination>
+        <source-user>
+          <member>any</member>
+        </source-user>
+        <category>
+          <member>any</member>
+        </category>
+        <application>
+          <member>any</member>
+        </application>
+        <service>
+          <member>application-default</member>
+        </service>
+        <hip-profiles>
+          <member>any</member>
+        </hip-profiles>
+        <action>allow</action>
+      </entry>
+      
